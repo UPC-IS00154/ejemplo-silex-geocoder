@@ -1,0 +1,50 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Mapa' %}
+
+{% block body %}
+
+<!-- API de Google Maps -->
+<script data-require="google-maps@*" data-semver="1.0.0" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<!-- Espacio para el mapa con el id = map -->
+<div id="map" style="width:100%;height:300px"></div>
+
+<script>
+
+// carga el mapa
+function initMap() {
+
+  // define el lugar a mostrar en el mapa
+  var myLatLng = {lat: {{ latitud }}, lng: {{ longitud }} };
+
+  // crea el mapa en el div con el id = map -->
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: myLatLng,
+    scrollwheel: false,
+    zoom: 5
+  });
+
+  // crea un marcador con la posición
+  var marker = new google.maps.Marker({
+    map: map,
+    position: myLatLng,
+    title: '{{ lugar }}'
+  });
+  
+  // crea un manejador de 'click'  para el marcador
+  marker.addListener('click', function() {
+    map.setZoom(8);
+    map.setCenter(marker.getPosition());
+  });  
+}
+
+
+// ejecuta 'initMap' al cargar la página web
+google.maps.event.addDomListener(window, 'load', function() { 
+  initMap();
+});
+</script>
+
+
+{% endblock %}

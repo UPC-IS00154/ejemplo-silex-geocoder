@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Formulario' %}
+
+{% block body %}
+
+  <form action="{{ url('doGeocode') }}" method="post">
+  
+    Lugar
+    <input type="text" name="lugar">
+    <br/>
+
+    <button type="submit">
+    Saludar
+    </button>
+    
+  </form>
+
+{% endblock %}
