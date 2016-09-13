@@ -31,17 +31,17 @@ function initMap() {
     position: myLatLng,
     title: '{{ lugar }}'
   });
-  
+
   // crea un manejador de 'click'  para el marcador
   marker.addListener('click', function() {
     map.setZoom(8);
     map.setCenter(marker.getPosition());
-  });  
+  });
 }
 
 
 // ejecuta 'initMap' al cargar la página web
-google.maps.event.addDomListener(window, 'load', function() { 
+google.maps.event.addDomListener(window, 'load', function() {
   initMap();
 });
 </script>
